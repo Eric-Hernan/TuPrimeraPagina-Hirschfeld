@@ -1,0 +1,24 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block content %}
+    <h3>Buscar en el Inventario</h3>
+    
+    <form method="GET" action="{% url 'buscar_libro' %}">
+        <input type="text" name="titulo" placeholder="Ej: Saussure, Lotman...">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+
+    {% if query %}
+        <h4>Resultados para "{{ query }}":</h4>
+        <ul>
+            {% for libro in resultados %}
+                <li><strong>{{ libro.titulo }}</strong> - {{ libro.autor }} ({{ libro.categoria }})</li>
+            {% empty %}
+                <li>No se encontraron libros con ese título en tu inventario.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

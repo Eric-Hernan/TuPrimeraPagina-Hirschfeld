@@ -1,0 +1,9 @@
+{% extends 'biblioteca/base.html' %}
+{% block content %}
+    <h3>Registrar un Nuevo Amigo</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Amigo</button>
+    </form>
+{% endblock %}
