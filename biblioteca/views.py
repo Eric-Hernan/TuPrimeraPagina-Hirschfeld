@@ -68,7 +68,7 @@ def registrar_prestamo(request):
 class LibroCreateView(LoginRequiredMixin, CreateView):
     model = Libro
     form_class = LibroForm
-    template_name = 'biblioteca/libro_form.html'
+    template_name = 'biblioteca/agregar_libro.html' 
     success_url = reverse_lazy('lista_libros')
 
 class LibroDeleteView(LoginRequiredMixin, DeleteView):
