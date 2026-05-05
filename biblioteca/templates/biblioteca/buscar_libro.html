@@ -21,4 +21,8 @@
         </ul>
     {% endif %}
 
+    {% if libro.imagen %}
+    <img src="{{ libro.imagen.url }}" alt="Portada de {{ libro.titulo }}" style="max-width: 150px;">
+{% endif %}
+
 {% endblock %}
