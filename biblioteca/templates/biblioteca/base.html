@@ -8,28 +8,32 @@
     <nav>
         <h2>Sistema de Préstamos</h2>
         <a href="/">Inicio</a> | 
-        <a href="/agregar-libro/">Agregar Libro al Catálogo</a>
+        <a href="/agregar-libro/">Agregar Libro</a> |
+        <a href="/buscar/">Buscar Libro</a> |
+        <a href="/agregar-amigo/">Registrar Amigo</a> |
+        <a href="/registrar-prestamo/">Nuevo Préstamo</a> |
+        <a href="/about/">Acerca de mí</a> |
+        
+       
+        {% if user.is_authenticated %}
+           
+            <b>¡Hola, {{ user.username }}!</b> |
+            <form action="/cuentas/logout/" method="POST" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer; padding: 0; font-size: 16px;">Cerrar Sesión</button>
+            </form>
+        {% else %}
+            
+            <a href="/cuentas/login/">Iniciar Sesión</a> |
+            <a href="/cuentas/registro/">Registrarse</a>
+            <a href="{% url 'lista_libros' %}">Ver Páginas (Blog)</a> |
+        {% endif %}
     </nav>
     <hr>
+    
     
     {% block content %}
     {% endblock %}
     
 </body>
 </html>
-
-<nav>
-        <h2>Sistema de Préstamos</h2>
-        <a href="/">Inicio</a> | 
-        <a href="/agregar-libro/">Agregar Libro al Catálogo</a> |
-        <a href="/buscar/">Buscar Libro</a>
-    </nav>
-
-    <nav>
-        <h2>Sistema de Préstamos</h2>
-        <a href="/">Inicio</a> | 
-        <a href="/agregar-libro/">Agregar Libro</a> |
-        <a href="/buscar/">Buscar Libro</a> |
-        <a href="/agregar-amigo/">Registrar Amigo</a> |
-        <a href="/registrar-prestamo/">Nuevo Préstamo</a>
-    </nav>

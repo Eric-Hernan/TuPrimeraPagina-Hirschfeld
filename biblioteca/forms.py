@@ -16,3 +16,7 @@ class PrestamoForm(forms.ModelForm):
                 model = Prestamo
                 fields = ['libro', 'amigo']
                 
+class LibroForm(forms.ModelForm):
+    class Meta:
+        model = Libro
+        fields = ['titulo', 'autor', 'categoria', 'sinopsis', 'imagen', 'fecha_publicacion']

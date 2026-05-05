@@ -3,4 +3,18 @@
 {% block content %}
     <h3>¡Bienvenido al Catálogo!</h3>
     <p>Acá vas a poder gestionar tu colección de libros.</p>
+
+    <hr>
+
+    <h2>Nuestras Páginas (Blog)</h2>
+
+    {% for libro in libros %}
+        <div style="border: 1px solid #ccc; margin-bottom: 20px; padding: 10px;">
+            <h3>{{ libro.titulo }}</h3>
+            <p>{{ libro.sinopsis|safe|truncatewords:20 }}</p> 
+            <a href="{% url 'detalle_libro' libro.pk %}">Leer más</a>
+        </div>
+    {% empty %}
+        <p>No hay páginas aún</p>
+    {% endfor %}
 {% endblock %}

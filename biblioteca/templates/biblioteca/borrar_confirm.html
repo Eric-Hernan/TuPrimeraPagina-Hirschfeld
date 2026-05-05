@@ -1,0 +1,10 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block content %}
+    <h2>¿Estás seguro de que querés borrar "{{ libro.titulo }}"?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" style="color: white; background: red;">Sí, eliminar definitivamente</button>
+        <a href="{% url 'detalle_libro' libro.pk %}">Cancelar</a>
+    </form>
+{% endblock %}

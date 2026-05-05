@@ -1,0 +1,17 @@
+{% extends 'biblioteca/base.html' %}
+
+{% block content %}
+    <h2>Explorar Páginas</h2>
+    {% for libro in libros %}
+        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px;">
+            <h3>{{ libro.titulo }}</h3>
+            {% if libro.imagen %}
+                <img src="{{ libro.imagen.url }}" width="100">
+            {% endif %}
+            <p>{{ libro.sinopsis|safe|truncatewords:20 }}</p>
+            <a href="{% url 'detalle_libro' libro.pk %}">Leer más</a>
+        </div>
+    {% empty %}
+        <p>No hay páginas aún</p> <!-- REQUISITO DEL BRIEF -->
+    {% endfor %}
+{% endblock %}
